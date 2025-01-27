@@ -3,16 +3,15 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": " nuxt dev --dotenv .env.development.local",
+    "dev": "nuxt dev --dotenv .env.development.local",
     "generate": "nuxt generate",
     "postinstall": "nuxt prepare",
     "preview": "nuxt preview",
     "prisma:migrate:dev": "npx prisma migrate dev",
     "prisma:migrate:generate": "npx prisma generate",
-    "prisma:production": "prisma generate && prisma migrate deploy",
     "prisma:reset": "npx prisma migrate reset",
     "prisma:studio": "npx prisma studio",
-    "start": "node ./server/index.mjs"
+    "start": "prisma generate && prisma migrate deploy && node ./server/index.mjs"
   },
   "dependencies": {
     "@heroicons/vue": "^2.0.18",
