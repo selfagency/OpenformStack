@@ -1,18 +1,18 @@
-import { NuxtAuthHandler } from "#auth";
-import GoogleProvider from "next-auth/providers/google";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client";
+import { NuxtAuthHandler } from '#auth';
+import GoogleProvider from 'next-auth/providers/google';
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
+import { PrismaClient } from '@prisma/client';
 
 const runtimeConfig = useRuntimeConfig();
 const prisma = new PrismaClient();
 
 export default NuxtAuthHandler({
   adapter: PrismaAdapter(prisma),
-  secret: useRuntimeConfig().API_ROUTE_SECRET,
+  secret: useRuntimeConfig().AUTH_SECRET,
   session: {
-    strategy: "jwt",
+    strategy: 'jwt',
   },
-  debug: process.env.NODE_ENV === "development",
+  debug: process.env.NODE_ENV === 'development',
   providers: [
     // @ts-expect-error
     GoogleProvider.default({
@@ -34,10 +34,10 @@ export default NuxtAuthHandler({
     },
   },
   events: {
-    createUser: async (message) => {
+    createUser: async message => {
       await prisma.workspace.create({
         data: {
-          name: "My workspace",
+          name: 'My workspace',
           users: {
             connect: {
               id: message.user.id,
