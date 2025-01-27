@@ -11,7 +11,7 @@
     "prisma:migrate:generate": "npx prisma generate",
     "prisma:reset": "npx prisma migrate reset",
     "prisma:studio": "npx prisma studio",
-    "start": "prisma generate && prisma migrate deploy && node .nuxt/server/index.mjs"
+    "start": "prisma generate && prisma migrate deploy && node .nuxt/dist/server/index.mjs"
   },
   "dependencies": {
     "@heroicons/vue": "^2.0.18",
