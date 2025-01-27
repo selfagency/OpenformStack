@@ -2,24 +2,17 @@
   "name": "nuxt-app",
   "private": true,
   "scripts": {
-    "build": "prisma generate && prisma migrate deploy && nuxt build",
+    "build": "nuxt build",
     "dev": " nuxt dev --dotenv .env.development.local",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "start": "node ./server/index.mjs",
     "postinstall": "nuxt prepare",
+    "preview": "nuxt preview",
     "prisma:migrate:dev": "npx prisma migrate dev",
     "prisma:migrate:generate": "npx prisma generate",
+    "prisma:production": "prisma generate && prisma migrate deploy",
     "prisma:reset": "npx prisma migrate reset",
-    "prisma:studio": "npx prisma studio"
-  },
-  "devDependencies": {
-    "@nuxt/devtools": "latest",
-    "@nuxt/ui": "^2.11.1",
-    "@sidebase/nuxt-auth": "^0.6.3",
-    "dayjs-nuxt": "^2.1.9",
-    "nuxt": "^3.8.2",
-    "prisma": "^5.7.0"
+    "prisma:studio": "npx prisma studio",
+    "start": "node ./server/index.mjs"
   },
   "dependencies": {
     "@heroicons/vue": "^2.0.18",
@@ -38,6 +31,14 @@
     "pinia": "^2.1.7",
     "resend": "^2.0.0",
     "stripe": "^14.8.0"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxt/ui": "^2.11.1",
+    "@sidebase/nuxt-auth": "^0.6.3",
+    "dayjs-nuxt": "^2.1.9",
+    "nuxt": "^3.8.2",
+    "prisma": "^5.7.0"
   },
   "engines": {
     "node": ">=20.0.0"
